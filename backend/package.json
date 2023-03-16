@@ -1,0 +1,43 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "graphql-backend",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/main/index.ts",
+    "start": "nodemon dist/index.js",
+    "prisma:generate": "npx prisma generate --schema=./prisma/schema.prisma",
+    "prisma:migration": "npx prisma migrate dev --schema=./src/main/infra/prisma/schema.prisma --name",
+    "prisma:migration:push": "npx prisma migrate deploy --schema=./prisma/schema.prisma",
+    "prisma:migration:push:build": "npx prisma migrate deploy",
+    "prisma:introspect": "npx prisma introspect --force --schema=./prisma/schema.prisma && npm run prisma:generate",
+    "prisma:push": "npx prisma db push --schema=./prisma/schema.prisma --accept-data-loss",
+    "prisma:studio": "npx prisma studio --schema=./prisma/schema.prisma"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.11.0",
+    "@types/pg": "^8.6.6",
+    "apollo-server": "^3.12.0",
+    "apollo-server-core": "^3.12.0",
+    "bcryptjs": "^2.4.3",
+    "class-validator": "^0.14.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "graphql": "^15.8.0",
+    "pg": "^8.10.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/node": "^18.14.6",
+    "@types/uuid": "^9.0.1",
+    "prisma": "^4.11.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.5"
+  }
+}
